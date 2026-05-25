@@ -392,7 +392,6 @@ export function Toolbar({ showAddPanel, onToggleAddPanel, className }: ToolbarPr
                   message: t('action.preActionCompletedNamed', { name: processName }),
                 });
               }
-
             }
 
             // 所有前置程序执行完毕后，等待设备/窗口就绪再连接
@@ -796,7 +795,8 @@ export function Toolbar({ showAddPanel, onToggleAddPanel, className }: ToolbarPr
             }
 
             // 提前注册回调收集器，await 完成后再发起连接，避免竞态
-            const collectedCallbacks: Array<{ message: string; details: { ctrl_id?: number } }> = [];
+            const collectedCallbacks: Array<{ message: string; details: { ctrl_id?: number } }> =
+              [];
             const unsubscribe = await maaService.onCallback((message, details) => {
               if (
                 message === 'Controller.Action.Succeeded' ||
