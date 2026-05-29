@@ -146,9 +146,8 @@ export async function saveConfig(
   log.debug('保存配置, 路径:', configPath);
 
   try {
-    const { writeTextFile, mkdir, exists, readTextFile, rename, remove } = await import(
-      '@tauri-apps/plugin-fs'
-    );
+    const { writeTextFile, mkdir, exists, readTextFile, rename, remove } =
+      await import('@tauri-apps/plugin-fs');
 
     // 确保 config 目录存在
     if (!(await exists(configDir))) {
